@@ -7,18 +7,16 @@
 {{- $style = dict "Context" . "ToCSS" $options "Inline" true | merge $style -}}
 {{- partial "plugin/style.html" $style -}}
 
-{{- $style := dict "Link" "/bundled/css/main.css" "Defer" true -}}
-{{- partial "plugin/style.html" $style -}}
-
-{{/* fuck safari */}}
-<script>
-  function z() {
-    const r = document.querySelector(':root')
-    r.style.setProperty('--window-height', `${window.innerHeight}px`)
-  }
-  z()
-  window.addEventListener('resize', z, { passive: true })
-</script>
+{{/* main style */}}
+{{- if site.Params.bundled -}}
+  {{- $style := dict "Link" "/bundled/css/style.min.css" "Defer" true -}}
+  {{- partial "plugin/style.html" $style -}}
+{{- else -}}
+  {{- $style := dict "Source" "scss/style.scss" "Fingerprint" $fingerprint -}}
+  {{- $options := dict "targetPath" "css/style.css" "enableSourceMap" true "includePaths" (slice "node_modules") -}}
+  {{- $style = dict "Context" . "ToCSS" $options "Minify" hugo.IsProduction "Defer" true | merge $style -}}
+  {{- partial "plugin/style.html" $style -}}
+{{- end -}}
 
 {{/* main js */}}
 {{- $script := dict "Link" "/bundled/js/main.js" "Defer" true "Esm" true -}}

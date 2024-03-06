@@ -1,17 +1,15 @@
 {{- $currentPage := . -}}
 
-{{- $identifier := "" -}}
-{{- $title := "404" -}}
-{{- $weight := -1 -}}
+{{- $dirName := "" -}}
+{{- $id := -1 -}}
 
 {{- range site.Menus.main -}}
   {{ $menu_item_url := .URL | relLangURL }}
   {{ $page_url:= $currentPage.RelPermalink | relLangURL }}
   {{ if eq $menu_item_url $page_url }}
-    {{- $identifier = .Identifier -}}
-    {{- $title = .Title -}}
-    {{- $weight = .Weight -}}
+    {{- $dirName = .Identifier -}}
+    {{- $id = .Weight -}}
   {{- end -}}
 {{- end -}}
 
-{{- return (dict "Identifier" $identifier "Title" $title "Weight" $weight) -}}
+{{- return (dict "DirName" $dirName "ID" $id) -}}

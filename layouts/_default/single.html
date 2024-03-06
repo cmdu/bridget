@@ -1,17 +1,18 @@
 {{- define "main" -}}
-  <div
-    class="container"
-    data-next="{{- i18n "next" -}}"
-    data-prev="{{- i18n "prev" -}}"
-    data-close="{{- i18n "close" -}}"
-    data-loading="{{- i18n "loading" -}}"
-  >
-    {{- with .Content -}}
-      <article>
-        {{- . -}}
-      </article>
-    {{- end -}}
-
+  {{- $params := .Scratch.Get "params" -}}
+  {{- $currentPage := . -}}
+  {{- with partial "function/currentMenuItem.html" . -}}
+    <script>
+      document.getElementById("main").setAttribute("currentMenuItemIndex", "{{- (sub .ID 1) -}}")
+      document.getElementById("main").setAttribute("nextText", "{{- i18n "next" -}}")
+      document.getElementById("main").setAttribute("prevText", "{{- i18n "prev" -}}")
+      document.getElementById("main").setAttribute("closeText", "{{- i18n "close" -}}")
+   </script>
+  {{- end -}}
+  <div class="container">
     {{- partial "nav.html" . -}}
   </div>
+  <article class="info">
+    {{ .Content }}
+  </article>
 {{- end -}}

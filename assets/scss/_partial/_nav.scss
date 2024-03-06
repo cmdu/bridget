@@ -31,12 +31,24 @@ nav {
 }
 
 @media (max-width: $tablet), (hover: none) {
+  body {
+    font-size: 1.2rem;
+  }
+
   nav {
     top: 0;
   }
+
+  // nav #logotype {
+  //   font-size:1.15rem;
+  // }
 
   .index,
   .threshold {
     display: none;
   }
+}
+
+#logotype {
+  font-family: Basteleur-Bold;
 }

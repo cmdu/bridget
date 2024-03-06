@@ -10,10 +10,7 @@ export interface ImageJSON {
   hiImgW: number
 }
 
-export async function getImageJSON(): Promise<ImageJSON[]> {
-  if (document.title.split(' | ')[0] === '404') {
-    return [] // no images on 404 page
-  }
+export async function initResources(): Promise<ImageJSON[]> {
   try {
     const response = await fetch(`${window.location.href}index.json`, {
       headers: {
