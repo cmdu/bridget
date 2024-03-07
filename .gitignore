@@ -2,8 +2,8 @@
 public/
 /exampleSite/resources/
 
-node_modules/
-build/
+# node_modules/
+# build/
 gen_/
 
 ## OS Files
