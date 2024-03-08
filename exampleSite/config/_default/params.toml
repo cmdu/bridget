@@ -1,13 +1,13 @@
 # description of the site (will be placed in meta)
-description = "Bridget is a minimal Hugo theme designed for photographers/visual artists."
+description = "Tobias Wirz is a Freelance Creative working in Advertising and Brand Identity"
 
 # whether to use favicon resource links
 # generate these with https://realfavicongenerator.net
 favicon = true
 # modern SVG favicon to use in place of older style .png and .ico files
-svgFavicon = "/dot.svg"
+svgFavicon = "/stw.svg"
 # fallback png favicon for unsupported browsers
-svgFaviconFallback = "/dot.png"
+svgFaviconFallback = "/stw.png"
 
 # resize options for dynamic resolution, please refer to https://gohugo.io/content-management/image-processing/#image-processing-options
 loResOpt = "800x webp Lanczos q60"
